@@ -1,4 +1,5 @@
-﻿using Annuaire.Methods;
+﻿#nullable disable
+using Annuaire.Methods;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace Annuaire.Models
         public int TelFixe { get; set; }
         public int TelPortable { get; set; }
         public string Email { get; set; }
-        public int ServiceId { get; set; }
-        public int SiteId { get; set; }
+        public virtual Services Services { get; set; }
+        public virtual Sites Site { get; set; }
     }
 }

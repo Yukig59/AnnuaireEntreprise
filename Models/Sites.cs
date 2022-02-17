@@ -11,5 +11,7 @@ namespace Annuaire.Models
     {
         public string Ville { get; set; }   
 
+        public virtual ICollection<Salaries>? Salaries { get; set; }
+
     }
 }
