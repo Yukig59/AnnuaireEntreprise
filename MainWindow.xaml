@@ -6,7 +6,20 @@
         xmlns:local="clr-namespace:Annuaire"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.cmd}" Executed="AdminPanel"/>
+    </Window.CommandBindings>
     <Grid>
-
+        <DataGrid x:Name="salariesList" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" />
+                <DataGridTextColumn Header="Prénom" Binding="{Binding Prenom}" />
+                <DataGridTextColumn Header="Service" Binding="{Binding Services.Name}" />
+                <DataGridTextColumn Header="Fixe" Binding="{Binding TelFixe}" />
+                <DataGridTextColumn Header="Portable" Binding="{Binding TelPortable}" />
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                <DataGridTextColumn Header="Site" Binding="{Binding Site.Ville}" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

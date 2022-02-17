@@ -18,7 +18,7 @@ namespace Annuaire.Models
         public int TelFixe { get; set; }
         public int TelPortable { get; set; }
         public string Email { get; set; }
-        public int ServiceId { get; set; }
+        public int ServicesId { get; set; }
         public int SiteId { get; set; }
         public virtual Services Services { get; set; }
         public virtual Sites Site { get; set; }
@@ -32,7 +32,7 @@ namespace Annuaire.Models
             salaries.TelPortable = TelPortable;
             salaries.Email = Email; 
             salaries.TelFixe = TelFixe;
-            salaries.ServiceId = Services.Id; 
+            salaries.ServicesId = Services.Id; 
             salaries.SiteId = Site.Id;
             try
             {
