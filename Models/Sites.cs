@@ -22,6 +22,7 @@ namespace Annuaire.Models
             site.Ville = Ville;
             try
             {
+                context.Add(site);
                 var result = context.SaveChanges();
                 if (result != 1)
                 {
@@ -44,8 +45,9 @@ namespace Annuaire.Models
             context.Database.EnsureCreated();
             try
             {
-                var result = context.Site.Remove(this);
-                if (result != null)
+                context.Site.Remove(this);
+                var result = context.SaveChanges();
+                if (result == 1)
                 {
                     return true;
                 }
@@ -93,8 +95,9 @@ namespace Annuaire.Models
             context.Database.EnsureCreated();
             try
             {
-                var result = context.Site.Update(this);
-                var returnresult = (result != null) ? true : false;
+                context.Site.Update(this);
+                var result =  context.SaveChanges();
+                var returnresult = (result == 1) ? true : false;
                 return returnresult;
 
             }

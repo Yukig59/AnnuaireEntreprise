@@ -40,5 +40,11 @@ namespace Annuaire.Pages
 
             }
         }
+        private void Button_Cancel(object sender, RoutedEventArgs e)
+        {
+            var win = new MainWindow();
+            Hide();
+            win.Show();
+        }
     }
 }
