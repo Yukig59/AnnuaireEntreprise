@@ -23,6 +23,7 @@ namespace Annuaire.Models
         public virtual Services Services { get; set; }
         public virtual Sites Site { get; set; }
         private DatabaseContext context = new DatabaseContext();
+
         public bool Create()
         {
             context.Database.EnsureCreated();
@@ -58,9 +59,9 @@ namespace Annuaire.Models
             context.Database.EnsureDeleted();
             try
             {
-                var result = context.Salarie.Remove(this);
-
-                if (result != null)
+                 context.Salarie.Remove(this);
+                var result = context.SaveChanges();
+                if (result == 1)
                 {
                     return true;
                 }
@@ -105,18 +106,23 @@ namespace Annuaire.Models
         }
         public bool Update()
         {
-                context.Database.EnsureCreated();
-                try
+            context.Database.EnsureCreated();
+            try
+            {
+                context.Salarie.Update(this);
+                var result = context.SaveChanges();
+                if (result == 1)
                 {
-                   var result =  context.Salarie.Update(this);
-                var returnresult = (result != null) ? true : false;
-                return returnresult;
-
-            }
-            catch (Exception)
-                {
-                    throw;
+                    return true;
                 }
+                else
+                {
+                    return false;
+                }
+            }catch (Exception)
+            {
+                throw;
             }
+        }
     }
 }

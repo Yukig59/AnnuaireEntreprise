@@ -1,5 +1,7 @@
-﻿using Annuaire.Contexts;
+﻿#nullable disable
+using Annuaire.Contexts;
 using Annuaire.Methods;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +14,8 @@ namespace Annuaire.Models
     {
         public int Id { get; set; }
         public string Ville { get; set; }
-        private DatabaseContext context = new DatabaseContext();
-        public virtual ICollection<Salaries>? Salaries { get; set; }
+        private DatabaseContext context = new DatabaseContext(); 
+        public virtual ICollection<Salaries> Salaries { get; set; }
 
         public bool Create()
         {
@@ -67,7 +69,7 @@ namespace Annuaire.Models
             context.Database.EnsureCreated();
                 try
                 {
-                    IEnumerable<Sites> Sites = context.Site.ToList();
+                IEnumerable<Sites> Sites = context.Site.AsNoTracking().ToList();
                     return Sites;
                 }
                 catch (Exception) 

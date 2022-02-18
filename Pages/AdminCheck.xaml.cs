@@ -20,9 +20,13 @@ namespace Annuaire.Pages
     public partial class AdminCheck : Window
     {
         private string password = "123456";
+        public static RoutedCommand enter = new();
+
         public AdminCheck()
         {
             InitializeComponent();
+            enter.InputGestures.Add(new KeyGesture(Key.Enter, ModifierKeys.Control));
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -30,7 +34,7 @@ namespace Annuaire.Pages
             if(passwordAdmin.Password == password)
             {
                 var win = new AdminPanel();
-                Hide();
+                Close();
                 win.Show();
             }
             else
@@ -43,7 +47,7 @@ namespace Annuaire.Pages
         private void Button_Cancel(object sender, RoutedEventArgs e)
         {
             var win = new MainWindow();
-            Hide();
+            Close();
             win.Show();
         }
     }

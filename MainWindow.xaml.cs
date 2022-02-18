@@ -35,7 +35,7 @@ namespace Annuaire
         {
             var win = new AdminCheck();
            
-            Hide();
+            Close();
             win.ShowDialog();
         }
 

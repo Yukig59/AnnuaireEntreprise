@@ -13,43 +13,36 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Annuaire.Pages.SiteViews
+namespace Annuaire.Pages.ServiceViews
 {
     /// <summary>
-    /// Logique d'interaction pour EditSite.xaml
+    /// Logique d'interaction pour AddService.xaml
     /// </summary>
-    public partial class EditSite : Window
+    public partial class AddService : Window
     {
-        public EditSite(Sites site)
+        public AddService()
         {
             InitializeComponent();
-            VilleInput.Text = site.Ville;
-            IdHidden.Text = site.Id.ToString();
-            IdHidden.Visibility = Visibility.Hidden;
         }
 
         private void Button_Valider(object sender, RoutedEventArgs e)
         {
-            Sites site = new();
-            site.Ville = VilleInput.Text;
-            site.Id = int.Parse(IdHidden.Text);
+            Services service = new();
+            service.Name = serviceInput.Text;
             try
             {
-                var result = site.Update();
-                if (result == true)
+                var result = service.Create();
+                if(result == true)
                 {
                     var win = new AdminPanel();
                     Close();
                     win.Show();
                 }
-
-            }
-            catch (Exception ex)
+            }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void Button_Cancel(object sender, RoutedEventArgs e)
         {
             var win = new AdminPanel();

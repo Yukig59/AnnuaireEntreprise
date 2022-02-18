@@ -35,6 +35,7 @@ namespace Annuaire.Contexts
 
                 var _connectionString = GetConnectionString();
                 optionsBuilder.UseSqlServer(_connectionString);
+                optionsBuilder.EnableSensitiveDataLogging();
             }
             base.OnConfiguring(optionsBuilder);
         }

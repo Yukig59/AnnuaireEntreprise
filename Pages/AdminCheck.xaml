@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Annuaire.Pages"
         mc:Ignorable="d"
-        Title="Verification Admin" Height="164" Width="314">
+        Title="Verification Admin" Height="164" Width="314"  FocusManager.FocusedElement="{Binding ElementName=passwordAdmin}">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:AdminCheck.enter}" Executed="Button_Click"/>
+    </Window.CommandBindings>
     <Grid>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="CODE SECRET :" HorizontalAlignment="Center" Margin="0,15,0,0"/>

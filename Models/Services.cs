@@ -1,4 +1,5 @@
-﻿using Annuaire.Contexts;
+﻿#nullable disable 
+using Annuaire.Contexts;
 using Annuaire.Methods;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,13 +15,13 @@ namespace Annuaire.Models
         public int Id { get; set; }
 
         public string Name { get; set; }
-        public virtual ICollection<Salaries>? Salaries { get; set; }
+        public virtual ICollection<Salaries> Salaries { get; set; }
         private DatabaseContext context = new DatabaseContext();
 
         public bool Create()
         {
             context.Database.EnsureCreated();
-            Services? services = new Services();
+            Services services = new Services();
             services.Name = Name;
             try
             {
@@ -48,8 +49,9 @@ namespace Annuaire.Models
             context.Database.EnsureCreated();
             try
             {
-                var result = context.Service.Remove(this);
-                if(result != null)
+                context.Service.Remove(this);
+                var result = context.SaveChanges();
+                if (result == 1 )
                 {
                     return true;
                 }
@@ -68,7 +70,7 @@ namespace Annuaire.Models
             context.Database.EnsureCreated();
             try
             {
-                IEnumerable<Services> Services = context.Service.ToList();
+                IEnumerable<Services> Services = context.Service.AsNoTracking().ToList();
 
                 return Services;
             }
@@ -100,8 +102,9 @@ namespace Annuaire.Models
             context.Database.EnsureCreated();
             try
             {
-                var result = context.Service.Update(this);
-                var returnresult =   (result != null) ?  true :  false;
+                 context.Service.Update(this);
+                var result = context.SaveChanges();
+                var returnresult =   (result == 1) ?  true :  false;
                 return returnresult;
             }catch (Exception)
             {

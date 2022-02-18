@@ -35,7 +35,7 @@ namespace Annuaire.Pages.SiteViews
                 if (result == true)
                 {
                     var win = new AdminPanel();
-                    Hide();
+                    Close();
                     win.Show();
                 }
                 
@@ -47,7 +47,9 @@ namespace Annuaire.Pages.SiteViews
 
         private void Button_Cancel(object sender, RoutedEventArgs e)
         {
-
+            var win = new AdminPanel();
+            Close();
+            win.Show();
         }
     }
 }

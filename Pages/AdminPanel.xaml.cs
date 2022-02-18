@@ -24,14 +24,21 @@ namespace Annuaire.Pages
         {
             InitializeComponent();
             Sites site = new();
+            Services services = new();
+            Salaries salaries = new();
             sitesList.DataContext = site;
             sitesList.ItemsSource = site.GetAll();
+            servicesList.DataContext = services;
+            servicesList.ItemsSource = services.GetAll();
+            salarieList.DataContext = salaries;
+            salarieList.ItemsSource = salaries.GetAll();
+
         }
 
         private void btw_new_site(object sender, RoutedEventArgs e)
         {
             var win = new SiteViews.AddSite();
-            Hide();
+            Close();
             win.Show(); 
         }
 
@@ -39,7 +46,7 @@ namespace Annuaire.Pages
         {
             Sites site = (Sites)sitesList.SelectedItem;
             var win = new SiteViews.EditSite(site);
-            this.Hide();
+            this.Close();
             win.Show();
         }
 
@@ -52,13 +59,90 @@ namespace Annuaire.Pages
                 if(result == true)
                 {
                     var win = new AdminPanel();
-                    this.Hide();
+                    this.Close();
                     win.Show();
                 }
             }catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btw_new_service(object sender, RoutedEventArgs e)
+        {
+            var win = new ServiceViews.AddService();
+            Close();
+            win.Show();
+
+        }
+
+        private void btw_edit_service(object sender, RoutedEventArgs e)
+        {
+            Services services = (Services)servicesList.SelectedItem;
+            var win = new ServiceViews.EditService(services);
+            Close();
+            win.Show();
+
+        }
+
+        private void btw_del_service(object sender, RoutedEventArgs e)
+        {
+            Services service = (Services)servicesList.SelectedItem;
+            try
+            {
+                var result = service.Delete();
+                if(result == true)
+                {
+                    var win = new AdminPanel();
+                    this.Close();
+                    win.Show();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btw_new_salarie(object sender, RoutedEventArgs e)
+        {
+            var win = new SalarieViews.AddSalarie();
+            Close();
+            win.Show();
+        }
+
+        private void btw_edit_salarie(object sender, RoutedEventArgs e)
+        {
+            var win = new SalarieViews.EditSalarie((Salaries)salarieList.SelectedItem);
+            Close();
+            win.Show();
+        }
+
+        private void btw_del_salarie(object sender, RoutedEventArgs e)
+        {
+            Salaries salarie = (Salaries)servicesList.SelectedItem;
+            try
+            {
+                var result = salarie.Delete();
+                if (result == true)
+                {
+                    var win = new AdminPanel();
+                    this.Close();
+                    win.Show();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void Row_DoubleClick(object sender, RoutedEventArgs e)
+        {
+            Salaries salarie = (Salaries)salarieList.SelectedItem;
+            var win = new SalarieViews.ShowSalarie(salarie);
+            win.ShowDialog();
         }
     }
 }
