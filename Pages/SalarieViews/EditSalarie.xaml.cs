@@ -37,6 +37,7 @@ namespace Annuaire.Pages.SalarieViews
             salaries.Id = int.Parse(idHidden.Text);
             salaries.Nom = Iname.Text;
             salaries.Prenom = Iprenom.Text;
+            salaries.Email = Iemail.Text;
             salaries.TelPortable = int.Parse(ItelPort.Text);
             salaries.TelFixe = int.Parse(ItelFixe.Text);
             salaries.Services = (Services)serviceChoice.SelectedItem;
@@ -54,8 +55,7 @@ namespace Annuaire.Pages.SalarieViews
                 }
             }catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-            }
+                throw;            }
         }
 
         private void btn_Annuler_Click(object sender, RoutedEventArgs e)

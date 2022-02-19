@@ -78,6 +78,11 @@ namespace Annuaire.Contexts
 
 
         }
+
+        internal object Entity(Salaries salaries)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }

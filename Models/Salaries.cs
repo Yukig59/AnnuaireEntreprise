@@ -109,6 +109,7 @@ namespace Annuaire.Models
             context.Database.EnsureCreated();
             try
             {
+                context.Entry(this).State = EntityState.Modified;
                 context.Salarie.Update(this);
                 var result = context.SaveChanges();
                 if (result == 1)
