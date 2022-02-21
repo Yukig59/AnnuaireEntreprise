@@ -10,7 +10,19 @@
         <CommandBinding Command="{x:Static local:MainWindow.cmd}" Executed="AdminPanel"/>
     </Window.CommandBindings>
     <Grid>
-        <DataGrid x:Name="salariesList" AutoGenerateColumns="False">
+        <TextBlock Text="Rechercher par :"/>
+        <StackPanel Orientation="Horizontal" Margin="0,26,0,0" Height="25" VerticalAlignment="Top">
+            <ComboBox x:Name="sitechoice" Width="139" DisplayMemberPath="Ville" SelectedValuePath="Id"/>
+            <ComboBox x:Name="servicechoice" Width="155" DisplayMemberPath="Name" SelectedValuePath="Id"/>
+            <TextBox Width="250" x:Name="searchInput"></TextBox>
+            <Button Content="&#xf002;" FontFamily="{StaticResource FontAwesome}" Click="Button_Click"/>
+        </StackPanel>
+        <DataGrid x:Name="salariesList" AutoGenerateColumns="False" Margin="0,51,0,0">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" />
                 <DataGridTextColumn Header="Prénom" Binding="{Binding Prenom}" />

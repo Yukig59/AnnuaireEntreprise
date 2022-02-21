@@ -5,12 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Annuaire.Pages"
         mc:Ignorable="d"
-        Title="AdminPanel" Height="450" Width="800">
+        Title="AdminPanel" Height="463" Width="813">
     <Grid>
-        <TabControl>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button Margin="763,1,0,0" Content="&#xf410;" FontFamily="{StaticResource FontAwesome}" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="MediumVioletRed" Background="Transparent" BorderBrush="Transparent" Click="Button_Click"/>
+        <TabControl Margin="0,19,0,0">
             <TabItem Header="Sites">
                 <Grid Background="#FFE5E5E5">
-                   
+
                     <Button Content="Nouveau" Margin="10,12,0,0" Click="btw_new_site" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <Button Content="Modifier" Margin="107,12,0,0" Click="btw_edit_site" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <Button Content="Supprimer" Margin="204,12,0,0" Click="btw_del_site" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -25,7 +29,7 @@
             </TabItem>
             <TabItem Header="Services">
                 <Grid Background="#FFE5E5E5">
-                    
+
                     <Button Content="Nouveau" Margin="10,12,0,0" Click="btw_new_service" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <Button Content="Modifier" Margin="107,12,0,0" Click="btw_edit_service" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <Button Content="Supprimer" Margin="204,12,0,0" Click="btw_del_service" HorizontalAlignment="Left" VerticalAlignment="Top"/>

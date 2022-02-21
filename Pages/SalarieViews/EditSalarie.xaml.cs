@@ -55,7 +55,8 @@ namespace Annuaire.Pages.SalarieViews
                 }
             }catch (Exception ex)
             {
-                throw;            }
+                throw;    
+            }
         }
 
         private void btn_Annuler_Click(object sender, RoutedEventArgs e)

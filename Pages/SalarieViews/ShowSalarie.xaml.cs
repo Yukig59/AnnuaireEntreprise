@@ -23,6 +23,19 @@ namespace Annuaire.Pages.SalarieViews
         public ShowSalarie(Salaries salaries)
         {
             InitializeComponent();
+            DataContext = salaries;
+            Name.Text += salaries.Nom;
+            Prenom.Text += salaries.Prenom;
+            TelMobile.Text += salaries.TelPortable;
+            TelFixe.Text += salaries.TelFixe;
+            Email.Text += salaries.Email;
+            Ville.Text += salaries.Site.Ville;
+            Service.Text += salaries.Services.Name;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

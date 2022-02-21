@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Annuaire.Pages.SalarieViews"
         mc:Ignorable="d"
-        Title="AddSalarie" Height="349" Width="359">
+        Title="AddSalarie" Height="354" Width="364">
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

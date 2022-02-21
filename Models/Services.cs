@@ -47,21 +47,30 @@ namespace Annuaire.Models
         public bool Delete()
         {
             context.Database.EnsureCreated();
-            try
+            if (isSalarieDansService() == false)
             {
-                context.Service.Remove(this);
-                var result = context.SaveChanges();
-                if (result == 1 )
+
+                try
                 {
-                    return true;
+                    context.Service.Remove(this);
+                    var result = context.SaveChanges();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                    else { return false; }
+
                 }
-                else { return false; }
+                catch (Exception)
+                {
 
+                    throw;
+                }
             }
-            catch (Exception)
+            else
             {
-
-                throw;
+                Console.WriteLine("Impossible de supprimer : il y a un salarié dans le service");
+                return false;
             }
         }
 
@@ -109,6 +118,20 @@ namespace Annuaire.Models
             }catch (Exception)
             {
                 throw;
+            }
+        }
+        public bool isSalarieDansService()
+        {
+            var salarie = new Salaries();
+            var sl = salarie.GetAll();
+            var test = sl.FirstOrDefault(predicate: salarie => salarie.ServicesId == this.Id);
+            if (test != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

@@ -36,10 +36,13 @@ namespace Annuaire.Pages.SalarieViews
             Salaries salaries = new();
             salaries.Nom = Iname.Text;
             salaries.Prenom = Iprenom.Text;
+            salaries.Email = Iemail.Text;
             salaries.TelPortable = int.Parse(ItelPort.Text);
             salaries.TelFixe = int.Parse(ItelFixe.Text);
             salaries.Services = (Services)serviceChoice.SelectedItem;
+            salaries.ServicesId = salaries.Services.Id;
             salaries.Site = (Sites)siteChoice.SelectedItem;
+            salaries.SiteId = salaries.Site.Id; 
             try
             {
                 var result = salaries.Create();
@@ -48,6 +51,10 @@ namespace Annuaire.Pages.SalarieViews
                     var win = new AdminPanel();
                     Close();
                     win.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Il y a eu une erreur lors de l'insert en base de données");
                 }
             }
             catch (Exception ex)

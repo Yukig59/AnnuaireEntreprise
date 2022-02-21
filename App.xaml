@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:Annuaire"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <FontFamily x:Key="FontAwesome">/Fonts/fontawesome-webfonts.otf#Font Awesome 5 Free Solid</FontFamily>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

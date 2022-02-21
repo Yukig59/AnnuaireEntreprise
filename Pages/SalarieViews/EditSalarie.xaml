@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Annuaire.Pages.SalarieViews"
         mc:Ignorable="d"
-        Title="EditSalarie" Height="339" Width="354">
+        Title="EditSalarie" Height="344" Width="359">
     <Grid>
         <TextBlock x:Name="idHidden"/>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" >

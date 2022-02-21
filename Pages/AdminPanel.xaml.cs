@@ -62,6 +62,11 @@ namespace Annuaire.Pages
                     this.Close();
                     win.Show();
                 }
+                else
+                {
+
+                    MessageBox.Show("Il y a un ou plusieurs salariés dans cette ville, supprimez les puis réessayez.");
+                }
             }catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -97,6 +102,11 @@ namespace Annuaire.Pages
                     this.Close();
                     win.Show();
 
+                }
+                else
+                {
+
+                    MessageBox.Show("Il y a un ou plusieurs salariés dans ce service, supprimez les puis réessayez.");
                 }
             }
             catch (Exception ex)
@@ -143,6 +153,14 @@ namespace Annuaire.Pages
             Salaries salarie = (Salaries)salarieList.SelectedItem;
             var win = new SalarieViews.ShowSalarie(salarie);
             win.ShowDialog();
+        }
+
+      
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var win = new MainWindow();
+            Close();
+            win.Show();
         }
     }
 }

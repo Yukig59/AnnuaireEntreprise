@@ -45,22 +45,29 @@ namespace Annuaire.Models
         public bool Delete()
         {
             context.Database.EnsureCreated();
+           if(isSalarieDansVille() == false) { 
             try
-            {
-                context.Site.Remove(this);
-                var result = context.SaveChanges();
-                if (result == 1)
                 {
-                    return true;
+                    context.Site.Remove(this);
+                    var result = context.SaveChanges();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    return false;
+                    throw;
                 }
             }
-            catch (Exception)
+            else
             {
-                throw;
+                Console.WriteLine("Impossible de supprimer : il y a un salarié dans la ville");
+                return false;
             }
         }
 
@@ -107,6 +114,20 @@ namespace Annuaire.Models
             {
                 throw;
             }
+        }
+
+        public bool isSalarieDansVille()
+        {
+            var salarie = new Salaries();
+            var sl = salarie.GetAll();
+            var test = sl.FirstOrDefault(predicate: salarie => salarie.SiteId == this.Id);
+            if (test != null){
+                return true;
+            }
+            else
+            {
+                return false;
+            }    
         }
     }
 }

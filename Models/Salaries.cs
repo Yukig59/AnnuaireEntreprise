@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Annuaire.Models
 {
@@ -27,29 +28,24 @@ namespace Annuaire.Models
         public bool Create()
         {
             context.Database.EnsureCreated();
-            Salaries salaries = new Salaries();
-            salaries.Nom = Nom;
-            salaries.Prenom = Prenom;
-            salaries.TelPortable = TelPortable;
-            salaries.Email = Email; 
-            salaries.TelFixe = TelFixe;
-            salaries.ServicesId = Services.Id; 
-            salaries.SiteId = Site.Id;
+            context.Entry(this).State = EntityState.Modified;
+
             try
             {
-                context.Salarie.Add(salaries);
+                context.Salarie.Add(this);
                 var result = context.SaveChanges();
-                if (result != 1)
-                {
-                    return false;
-                }
-                else
+                if (result == 1)
                 {
                     return true;
                 }
-            }catch (Exception)
+                else
+                {
+                    return false;
+                }
+            }catch (Exception ex)
             {
-                throw;
+                MessageBox.Show(ex.Message);
+                return false;
             }
 
         }
