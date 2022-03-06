@@ -71,5 +71,12 @@ namespace Annuaire
             var win = new Pages.SalarieViews.ShowSalarie(salarie);
             win.ShowDialog();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var win = new MainWindow();
+            this.Close();
+            win.Show();
+        }
     }
 }

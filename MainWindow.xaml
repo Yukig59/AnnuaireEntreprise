@@ -16,6 +16,7 @@
             <ComboBox x:Name="servicechoice" Width="155" DisplayMemberPath="Name" SelectedValuePath="Id"/>
             <TextBox Width="250" x:Name="searchInput"></TextBox>
             <Button Content="&#xf002;" FontFamily="{StaticResource FontAwesome}" Click="Button_Click"/>
+            <Button Content="&#xf410;" FontFamily="{StaticResource FontAwesome}" Click="Button_Click_1" />
         </StackPanel>
         <DataGrid x:Name="salariesList" AutoGenerateColumns="False" Margin="0,51,0,0">
             <DataGrid.Resources>
